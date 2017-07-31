@@ -1,6 +1,13 @@
 class Sample < ApplicationRecord
   after_create :create_sample_image_file
 
+  class << self
+    def train_classifier
+      result = `python3.6 ./scripts/train_classifier.py`
+      puts result
+    end
+  end
+
   private
 
   def create_sample_image_file
@@ -10,6 +17,5 @@ class Sample < ApplicationRecord
 
   def generate_json_data(sample_id = self.id, sample_target = self.target)
     result = `python3.6 ./scripts/generate_data.py #{sample_id} #{sample_target}`
-    puts result
   end
 end

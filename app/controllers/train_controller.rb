@@ -1,10 +1,17 @@
 class TrainController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: %i[feed]
+  skip_before_action :verify_authenticity_token, except: %i(index)
   def index
   end
 
   def feed
     Sample.create(sample_params)
+    respond_to do |format|
+      format.json { render json: { status: 'OK', code: 200 } }
+    end
+  end
+
+  def train_classifier
+    Sample.train_classifier
     respond_to do |format|
       format.json { render json: { status: 'OK', code: 200 } }
     end

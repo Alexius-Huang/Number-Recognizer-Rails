@@ -5,22 +5,6 @@ $(document).ready(function() {
     var mime = 'image/jpeg';
     var imgURL = canvas.toDataURL(mime);
     var answer = parseInt($('input[type="radio"]:checked').val());
-    var inputOptions = new Promise(function (resolve) {
-      setTimeout(function () {
-        resolve({
-          0: '0',
-          1: '1',
-          2: '2',
-          3: '3',
-          4: '4',
-          5: '5',
-          6: '6',
-          7: '7',
-          8: '8',
-          9: '9',
-        })
-      }, 1000)
-    })
     $.ajax({
       type: 'post',
       url:  './feed',
@@ -32,4 +16,16 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('#train').on('click', function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: './train_classifier',
+      dataType: 'json',
+      sucess: function(data) {
+        console.log(data)
+      }
+    })
+  })
 });

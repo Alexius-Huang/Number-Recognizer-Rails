@@ -1,13 +1,6 @@
-# from sklearn import svm
-# from sklearn.externals import joblib
-
 import sys
 import os.path as path
 import base64
-# import numpy as np
-# import matplotlib.pyplot as plt
-# import matplotlib.image as mpimg
-# import json
 
 import helpers.image_processing as imgps
 
