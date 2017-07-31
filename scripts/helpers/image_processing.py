@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
 import os.path as path
+import base64
+import io
 from PIL import Image
 
 LEVEL = [8, 16, 32, 64, 128]
@@ -88,22 +90,39 @@ def calibrate_image_array(numpy_grayscale_array):
 
 # Saving the image
 def save_image(data, cmap, filename):
-    # Get the size of the image
-    sizes = np.shape(data)
-    height = float(sizes[0])
-    width = float(sizes[1])
-     
-    # Plotting the image
-    fig = plt.figure()
-    fig.set_size_inches(width / height, 1, forward = False)
-    ax = plt.Axes(fig, [0., 0., 1., 1.])
-    ax.set_axis_off()
-    fig.add_axes(ax)
- 
-    # Saving the image
-    ax.imshow(data, cmap = cmap)
-    plt.savefig(filename, dpi = height)
-    plt.close()
+  # Get the size of the image
+  sizes = np.shape(data)
+  height = float(sizes[0])
+  width = float(sizes[1])
+    
+  # Plotting the image
+  fig = plt.figure()
+  fig.set_size_inches(width / height, 1, forward = False)
+  ax = plt.Axes(fig, [0., 0., 1., 1.])
+  ax.set_axis_off()
+  fig.add_axes(ax)
+
+  # Saving the image
+  ax.imshow(data, cmap = cmap)
+  plt.savefig(filename, dpi = height)
+  plt.close()
+
+def base64_to_grayscale(b64_string):
+  string = base64.b64decode(b64_string)
+  bytes_string = io.BytesIO(string)
+  img = mpimg.imread(bytes_string, format='JPG')
+
+  img_arr = []
+  size = np.shape(img)
+  height = size[0]
+  width  = size[1]
+
+  for y in range(0, height):
+    img_arr.append([])
+    for x in range(0, width):
+      img_arr[y].append(img[y][x][0])
+
+  return np.array(img_arr)
 
 # Read the image and read the grayscaled numpy array
 # Input should be the gray scaled image
