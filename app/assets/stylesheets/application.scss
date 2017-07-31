@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+$light: #b2dfef;
+$normal: #80cbe4;
+$deep: #4db6d9;
+
+html, body {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  background-color: $light;
+  height: 100%;
+  width: 100%;
+}
+.wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.canvas-wrapper {
+  height: 300px;
+  width: 800px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: $deep;
+}
+#main-canvas {
+  display: inline-block;
+  background-color: white;
+}
+div.control-panel {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  vertical-align: top;
+  width: 490px;
+  padding: 10pt;
+  border: none;
+}

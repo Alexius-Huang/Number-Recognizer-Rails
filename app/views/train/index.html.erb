@@ -1,2 +1,22 @@
-<h1>React Test</h1>
-<%= react_component 'Hello' %>
+<%= content_for :js do %>
+  <%= javascript_pack_tag 'panel' %>
+  <%= javascript_pack_tag 'ajax' %>
+<% end %>
+
+<div class="canvas-wrapper">
+  <canvas id="main-canvas"></canvas>
+  <div class="control-panel">
+    0 <input type="radio" name="digit" id="digit-0" value="0">
+    1 <input type="radio" name="digit" id="digit-1" value="1">
+    2 <input type="radio" name="digit" id="digit-2" value="2">
+    3 <input type="radio" name="digit" id="digit-3" value="3">
+    4 <input type="radio" name="digit" id="digit-4" value="4">
+    5 <input type="radio" name="digit" id="digit-5" value="5">
+    6 <input type="radio" name="digit" id="digit-6" value="6">
+    7 <input type="radio" name="digit" id="digit-7" value="7">
+    8 <input type="radio" name="digit" id="digit-8" value="8">
+    9 <input type="radio" name="digit" id="digit-9" value="9">
+    <button id="feed">Feed the Machine!</button>
+    <button id="clear">Clear Canvas</button>
+  </div>
+</div>
