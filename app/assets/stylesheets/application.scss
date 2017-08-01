@@ -124,6 +124,10 @@ div.control-panel {
       line-height: 25pt;
       background-color: $deep;
       color: white;
+      a {
+        
+        color: $light;
+      }
     }
     p:first-of-type {
       margin-top: 10pt;

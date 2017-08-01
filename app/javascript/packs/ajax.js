@@ -1,4 +1,15 @@
 $(document).ready(function() {
+  var dialogues = [
+    'Hello! Welcome to <a target="_blank" href="https://github.com/Maxwell-Alexius/Number-Recognizer-Rails">Maxwell\'s Number Recognizer</a>!',
+    'This project is based on <a target="_blank" href="https://en.wikipedia.org/wiki/Support_vector_machine">SVM</a> by <a target="_blank" href="http://scikit-learn.org/stable/modules/svm.html">Python Scikit-Learn</a>',
+    'Try to draw on the canvas and let the machine predict!'
+  ]
+  var count = 1;
+  for (let message of dialogues) {
+    setTimeout(() => { appendConsole(message) }, 1000 * count)
+    count++;
+  }
+
   $('#feed').on('click', function(event) {
     event.preventDefault();
     var answer = parseInt($('input[type="radio"]:checked').val());
@@ -146,7 +157,7 @@ function predictionCorrect(result) {
         appendConsole("Okay, got it!")
       }
     })
-  }, 1000)
+  }, 750)
 }
 
 function predictionFailed() {
@@ -179,7 +190,7 @@ function predictionFailed() {
             })
             $('input[type="radio]').off('click')
           })
-        }, 1000);
+        }, 750);
       } else {
         appendConsole("Okay, got it!")
         hidePrompt()
@@ -187,5 +198,5 @@ function predictionFailed() {
         clearCanvas()
       }
     })
-  }, 1000)
+  }, 750)
 }

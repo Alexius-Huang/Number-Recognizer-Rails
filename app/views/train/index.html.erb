@@ -1,8 +1,10 @@
 <%= content_for :js do %>
+  <%= javascript_pack_tag 'bg_canvas' %>
   <%= javascript_pack_tag 'panel' %>
   <%= javascript_pack_tag 'ajax' %>
 <% end %>
 
+<canvas id="background-canvas"></canvas>
 <div class="canvas-wrapper">
   <canvas id="main-canvas"></canvas>
   <div class="control-panel">
