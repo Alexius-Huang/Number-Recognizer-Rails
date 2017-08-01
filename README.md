@@ -1,24 +1,36 @@
-# README
+# Number Recognizer by Maxwell Alexius
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Number Recognizer UI](https://github.com/Maxwell-Alexius/Number-Recognizer-Rails/blob/master/readme_images/main.png)
 
-Things you may want to cover:
+A number recognizer based on SVM by Python Scikit-Learn
 
-* Ruby version
+## Requirements
 
-* System dependencies
+- Rails 5.1.2
+- Ruby 2.4.1
+- Gem `foreman` Installed
+- Python 3.6
+- Python Packages including
+  - `matplotlib`
+  - `numpy`
+  - `scipy`
+  - `pillow`
+  - `sklearn`
 
-* Configuration
+## How to Play?
 
-* Database creation
+Clone it!
 
-* Database initialization
+```
+$ git clone git@github.com:Maxwell-Alexius/Number-Recognizer-Rails.git
+```
 
-* How to run the test suite
+And then entering the project directory, run:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ foreman start
+```
 
-* Deployment instructions
+will start both Rails server and JS webpack server.
 
-* ...
+You can enter the default URL `localhost:5000` and play around with the number recognizer! 
