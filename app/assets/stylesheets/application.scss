@@ -28,6 +28,8 @@ html, body {
   background-color: $light;
   height: 100%;
   width: 100%;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
 }
 .wrapper {
   position: relative;
@@ -43,7 +45,8 @@ html, body {
   top: 0;
   bottom: 0;
   margin: auto;
-  background-color: $deep;
+  background-color: $normal;
+  font-size: 0;
 }
 #main-canvas {
   display: inline-block;
@@ -53,8 +56,88 @@ div.control-panel {
   box-sizing: border-box;
   display: inline-block;
   margin: 0;
+  padding: 0;
   vertical-align: top;
-  width: 490px;
-  padding: 10pt;
+  width: 500px;
   border: none;
+
+  div.input-group {
+    transition: .5s;
+    label {
+      box-sizing: border-box;
+      font-size: 20pt;
+      color: white;
+      display: inline-block; 
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      margin: 0;
+      border: 1pt solid $normal;
+    }
+    label:hover {
+      transition: .25s;
+      background-color: $light;
+    }
+    input {
+      position: absolute;
+      top: -1000pt;
+    }
+    input:checked + label {
+      background-color: $deep;
+    }
+  }
+  div.button-group {
+    button {
+      vertical-align: top;
+      width: 125px;
+      height: 75px;
+      font-size: 16px;
+      color: white;
+      background-color: $normal;
+      border: none;
+      border-top: 1px solid $light;
+      border-bottom: 1px solid $light;
+    }
+    button:focus {
+      outline: none;
+    }
+    button:hover {
+      transition: .25s;
+      background-color: $light;
+    }
+    button + button {
+      border-left: 1px solid $light;
+    }
+  }
+  div#console {
+    overflow: auto;
+    height: 175px;
+    p {
+      display: inline-block;
+      font-size: 14px;
+      margin: 0 5pt 10pt 10pt;
+      height: 25pt;
+      padding: 0 10pt;
+      border-radius: 12.5pt;
+      line-height: 25pt;
+      background-color: $deep;
+      color: white;
+    }
+    p:first-of-type {
+      margin-top: 10pt;
+    }
+    span.time-string {
+      display: inline-block;
+      font-size: 10px;
+      height: 25pt;
+      line-height: 25pt;
+      color: white;
+    }
+  }
+}
+
+.warning {
+  background-color: #f1749a;
+  transition: 0.5;
 }

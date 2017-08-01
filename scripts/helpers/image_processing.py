@@ -45,6 +45,9 @@ def calibrate_image_array(numpy_grayscale_array):
         mass_of_x += x
         mass_of_y += y
         recorded_dots += 1
+  
+  if recorded_dots == 0:
+    return gray
 
   # Get the centroid of the number image
   centroid_x = mass_of_x / recorded_dots

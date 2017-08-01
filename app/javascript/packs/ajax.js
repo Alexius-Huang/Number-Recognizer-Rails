@@ -5,6 +5,14 @@ $(document).ready(function() {
     var mime = 'image/jpeg';
     var imgURL = canvas.toDataURL(mime);
     var answer = parseInt($('input[type="radio"]:checked').val());
+
+    if (isNaN(answer)) {
+      appendConsole(`You must specify the target of the sample!`, '#f1749a');
+      $('.input-group').addClass('warning');
+      setTimeout(() => { $('.input-group').removeClass('warning') }, 1000)
+      return
+    }
+
     $.ajax({
       type: 'post',
       url:  './feed',
@@ -12,7 +20,8 @@ $(document).ready(function() {
       dataType: 'json',
       cache: false,
       success: function(data) {
-        console.log(`Number ${answer} is fed to the machine!`);
+        appendConsole(`Number ${answer} is fed to the machine!`)
+        uncheckAllButtons()
         clearCanvas();
       }
     });
@@ -25,7 +34,7 @@ $(document).ready(function() {
       url: './train_classifier',
       dataType: 'json',
       success: function(data) {
-        console.log(`Classifier trained!`);
+        appendConsole('New Classifier Has Been Trained!')
       }
     });
   });
@@ -43,7 +52,7 @@ $(document).ready(function() {
       dataType: 'json',
       cache: false,
       success: function(data) {
-        console.log(`Expected: ${answer} Got: ${data.result}`)
+        appendConsole(`Predicted Result: ${data.result}`)
       }
     });
   });
@@ -57,4 +66,23 @@ function clearCanvas() {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, 300, 300);
   }
+}
+
+function currentTimeString() {
+  var d = new Date()
+  return d.toLocaleString()
+}
+
+function appendConsole(message, color = '') {
+  var $console = $('#console')
+  var inlineStyle = ''
+  if (color) {
+    inlineStyle += `background-color: ${color};`
+  }
+  $console.append(`<p style="${inlineStyle}">${message}</p><span class="time-string">${currentTimeString()}</span><br />`)
+  $console[0].scrollTop = $console[0].scrollHeight;
+}
+
+function uncheckAllButtons() {
+  $('input[type="radio"]:checked').prop('checked', false)
 }
