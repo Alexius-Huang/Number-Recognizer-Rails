@@ -19,7 +19,7 @@ class TrainController < ApplicationController
   end
 
   def predict
-    result = Sample.predict(params['answer'], params['img_base64'])
+    result = Sample.predict(params['img_base64'])
     respond_to do |format|
       format.json { render json: { status: 'OK', code: 200, result: result } }
     end

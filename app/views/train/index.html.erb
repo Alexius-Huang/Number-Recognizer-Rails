@@ -6,6 +6,13 @@
 <div class="canvas-wrapper">
   <canvas id="main-canvas"></canvas>
   <div class="control-panel">
+    <div id="shade"></div>
+    <div class="button-group">
+      <button id="feed">Feed the Machine</button>
+      <button id="clear">Clear Canvas</button>
+      <button id="train">Train the Machine</button>
+      <button id="predict">Predict</button>
+    </div>
     <div class="input-group">
       <input type="radio" name="digit" id="digit-0" value="0"> <label for="digit-0">0</label>
       <input type="radio" name="digit" id="digit-1" value="1"> <label for="digit-1">1</label>
@@ -18,12 +25,13 @@
       <input type="radio" name="digit" id="digit-8" value="8"> <label for="digit-8">8</label>
       <input type="radio" name="digit" id="digit-9" value="9"> <label for="digit-9">9</label>
     </div>
-    <div class="button-group">
-      <button id="feed">Feed the Machine</button>
-      <button id="clear">Clear Canvas</button>
-      <button id="train">Train the Machine</button>
-      <button id="predict">Predict</button>
-    </div>
     <div id="console"></div>
+    <div id="prompt">
+      <button id="ans-yes">Yes</button>
+      <button id="ans-no">No</button>
+    </div>
+    <div id="submit">
+      <button id="submit-result">Submit</button>
+    </div>
   </div>
 </div>

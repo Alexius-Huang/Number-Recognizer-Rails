@@ -6,8 +6,8 @@ class Sample < ApplicationRecord
       result = `python3.6 ./scripts/train_classifier.py`
     end
 
-    def predict(answer, img_base64)
-      result = `python3.6 ./scripts/predict.py #{answer} "#{img_base64}"`
+    def predict(img_base64)
+      result = `python3.6 ./scripts/predict.py "#{img_base64}"`
       puts result
       result
     end

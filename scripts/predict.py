@@ -12,8 +12,7 @@ from PIL import Image
 from sklearn import svm
 from sklearn.externals import joblib
 
-target_answer = sys.argv[1]
-imgData = sys.argv[2]
+imgData = sys.argv[1]
 predicted = {}
 
 if imgData and imgData.startswith("data:image/jpeg;base64,"):

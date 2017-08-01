@@ -55,6 +55,7 @@ html, body {
 div.control-panel {
   box-sizing: border-box;
   display: inline-block;
+  position: relative;
   margin: 0;
   padding: 0;
   vertical-align: top;
@@ -73,7 +74,7 @@ div.control-panel {
       line-height: 50px;
       text-align: center;
       margin: 0;
-      border: 1pt solid $normal;
+      border-bottom: 1pt solid $light;
     }
     label:hover {
       transition: .25s;
@@ -111,7 +112,7 @@ div.control-panel {
     }
   }
   div#console {
-    overflow: auto;
+    overflow-y: auto;
     height: 175px;
     p {
       display: inline-block;
@@ -133,6 +134,40 @@ div.control-panel {
       height: 25pt;
       line-height: 25pt;
       color: white;
+    }
+  }
+  div#shade {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 2;
+    width: 500px;
+    height: 125px;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+  div#prompt, div#submit {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    button {
+      font-size: 12pt;
+      border: none;
+      height: 30pt;
+      line-height: 30pt;
+      padding: 0 10pt;
+      color: white;
+    }
+    button:focus {
+      outline: none;
+    }
+    button#ans-yes, button#submit-result {
+      background-color: #00c78c;
+    }
+    button#ans-no {
+      background-color: #f1749a;
     }
   }
 }
